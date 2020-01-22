@@ -96,8 +96,13 @@
                        @else
                            <p>No Post Available!</p>
                        @endif
+                       
 
-                       {{-- {{$post->links()}} --}}
+
+                       
+
+                       {{-- {{ $post->links() }} --}}
+
                     </div>
                 </div>
             </div>
