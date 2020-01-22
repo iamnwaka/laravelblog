@@ -10,6 +10,10 @@ class Post extends Model
         'post_title', 'post_body', 'post_image', 
     ];
 
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'post_id');
+    }
     
 }
 

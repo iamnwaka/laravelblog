@@ -31,7 +31,7 @@
                 </div>
             @endif
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header"><img src="{{asset('feed.jpeg')}}" style="width:20px;"></div>
 
                 <div class="card-body row">
                     @if (session('status'))
@@ -56,7 +56,7 @@
                        @if ((count($post) > 0 ))
                         @foreach ($post->all () as $post)
                         <h3 class="text-center">{{$post->post_title}}</h3>
-                        <img src="/storage/posts/images/{{$post->post_image}}" class="img-fluid image-post">
+                        <img src="/storage/posts/images/{{$post->post_image}}" class="img-fluid image-post ">
                         <p>{{substr($post->post_body, 0, 150)}}</p>
                         
 
@@ -66,16 +66,26 @@
                                     <span class="fa fa-eye"> VIEW</span>
                                 </a>
                             </li>
+                            @if(Auth::user()->id == $post->user_id)
                             <li role="presentation">
                                     <a href='{{url("/edit/{$post->id}")}}'>
                                         <span class="fa fa-pencil-square-o"> EDIT</span>
                                     </a>
                                 </li>
+                              
+                            
                                 <li role="presentation">
                                         <a href='{{url("/delete/{$post->id}")}}'>
                                             <span class="fa fa-trash"> DELETE</span>
                                         </a>
                                     </li>
+                                    @else
+
+                              <li role="presentation">
+                                    
+                                </li>
+
+                                    @endif
                          </ul>
           
 

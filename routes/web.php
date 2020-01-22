@@ -40,6 +40,8 @@ Route::get('/post', 'PostController@post');
 Route::get('/profile', 'ProfileController@profile')->middleware('auth');
 Route::get('/categories', 'CategoryController@categories');
 
+Route::get('/category/{id}', 'CategoryController@category');
+
 Route::get('/view/{id}', 'PostController@view');
 Route::get('/edit/{id}', 'PostController@edit');
 Route::get('/delete/{id}', 'PostController@delete');
@@ -47,10 +49,12 @@ Route::get('/like/{id}', 'PostController@like');
 Route::get('/dislike/{id}', 'PostController@dislike');
 
 Route::get('/post/show/{id}', 'PostController@show')->name('posts.show');
+Route::get('/post/cat/{id}', 'PostController@cat')->name('posts.cat');
 
 Route::post('/addCategory', 'CategoryController@addCategory');
 Route::post('/addProfile', 'ProfileController@addProfile');
 Route::post('/addPost', 'PostController@addPost');
+Route::post('/comment', 'CommentsController@newComment');
 
 Route::post('/comment/store', 'CommentController@store')->name('comment.add');
 Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');

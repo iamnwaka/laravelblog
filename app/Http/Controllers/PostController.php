@@ -103,22 +103,38 @@ class PostController extends Controller
         
     }
 
-    public function comment(Request $request, $post_id )
+    public function comment(Request $request)
 {
     $this->validate($request,[
-        'comment'=>'required',
+        'post'=>'required',
         
         
     ]); 
 
-    $post = Post::firstOrFail($post_id);
-    $comments = new Comment;
-    $comments->user_id = Auth::user()->id;
-    $comments->post_id = $post_id;
-    $comments->comment = $request->input('comment');
-    $comment->save();
-    return redirect("/view/{$post_id}")->with('response', 'Comments Added Succesfully');
+    $posts =new Post;
+    $posts->user_id =Auth::user()->id;
+    $posts->post_body =$request->input('post_body');
+    $posts->save();
+    return redirect("/comment")->with('response', 'Comments Added Succesfully');
 }
+
+    public function show($id)
+    {
+        $post = post::where($id)->firstOrFail();
+        $comments = $post->comments()->get();
+        return view('Posts.show', compact('posts', 'comments'));
+    }
+
+    public function replyStore(Request $request)
+    {
+        $posts =new Post;
+        $posts->user_id =Auth::user()->id;
+        $posts->post_body =$request->input('post_body');
+        $posts->save();
+
+        return back();
+
+    }
     
     public function like($id){
       $loggedin_user = Auth::user()->id;

@@ -42,7 +42,7 @@
                                     <option value="" style="font-size:30px;">Select</option>
                                     @if(count($categories) > 0 )
                                       @foreach ($categories->all() as $categories)
-                                <option value="{{$categories->id}}">{{$categories->category}}</option>
+                                      <option value="{{$categories->id}}">{{$categories->category}}</option>
                                       @endforeach
                                     @endif
                                 </select>

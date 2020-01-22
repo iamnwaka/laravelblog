@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Comment;
 
 class CategoryController extends Controller
 {
@@ -20,5 +21,11 @@ class CategoryController extends Controller
         $category->category =$request->input('category');
         $category->save();
         return redirect('/categories')->with('response', 'CATEGORY ADDED SUCCESSFULLY');
+    }
+
+    public function category($id){
+
+        $comments = Comment::where($id)->firstOrFail();
+        return view('Posts.cat', compact('comments'));
     }
 }
