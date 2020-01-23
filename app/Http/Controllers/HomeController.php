@@ -29,8 +29,8 @@ class HomeController extends Controller
     public function index()
     {
        $profile = Auth::user()->profile;
-
-       $posts =Post::paginate(5);
-        return view('home' ,['post' => $posts],compact('profile'));
+       $post = DB::table('posts')->simplePaginate(2);
+    //    $post = DB::table('posts')->paginate(2);
+        return view('home' ,['posts' => $post],compact('profile'));
     }
 }

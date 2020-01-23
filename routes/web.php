@@ -49,7 +49,7 @@ Route::get('/like/{id}', 'PostController@like');
 Route::get('/dislike/{id}', 'PostController@dislike');
 
 Route::get('/post/show/{id}', 'PostController@show')->name('posts.show');
-Route::get('/post/cat/{id}', 'PostController@cat')->name('posts.cat');
+Route::get('all/{category}','CatController@show');
 
 Route::post('/addCategory', 'CategoryController@addCategory');
 Route::post('/addProfile', 'ProfileController@addProfile');

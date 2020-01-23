@@ -53,8 +53,8 @@
                    
                    </div>
                    <div class="col-md-8">
-                       @if ((count($post) > 0 ))
-                        @foreach ($post->all () as $post)
+                       @if ((count($posts) > 0 ))
+                        @foreach ($posts->all () as $post)
                         <h3 class="text-center">{{$post->post_title}}</h3>
                         <img src="/storage/posts/images/{{$post->post_image}}" class="img-fluid image-post ">
                         <p>{{substr($post->post_body, 0, 150)}}</p>
@@ -101,7 +101,7 @@
 
                        
 
-                       {{-- {{ $post->links() }} --}}
+                       {{ $posts->links() }}
 
                     </div>
                 </div>
